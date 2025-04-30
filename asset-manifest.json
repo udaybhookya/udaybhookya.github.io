@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/udaychandra.github.io/static/css/main.d0033dcc.css",
+    "main.js": "/udaychandra.github.io/static/js/main.0733a19d.js",
+    "static/js/415.4d6acbeb.chunk.js": "/udaychandra.github.io/static/js/415.4d6acbeb.chunk.js",
+    "static/js/787.1ed0c42c.chunk.js": "/udaychandra.github.io/static/js/787.1ed0c42c.chunk.js",
+    "static/media/movie-recommendation.png": "/udaychandra.github.io/static/media/movie-recommendation.3f3f4fbffa8cd278df77.png",
+    "static/media/home-main_3.png": "/udaychandra.github.io/static/media/home-main_3.98130ba8bb26b19f5d83.png",
+    "static/media/haci.png": "/udaychandra.github.io/static/media/haci.9725a325722c55e9c694.png",
+    "static/media/Uday-Chandra-Bhookya-J25-v2.pdf": "/udaychandra.github.io/static/media/Uday-Chandra-Bhookya-J25-v2.acf1030846415c99eb1b.pdf",
+    "static/media/home-bg.jpg": "/udaychandra.github.io/static/media/home-bg.dc52d5d40a40b13154b0.jpg",
+    "static/media/logo.png": "/udaychandra.github.io/static/media/logo.f581e0171e9175e3b9cf.png",
+    "static/media/avatar.svg": "/udaychandra.github.io/static/media/avatar.5852f40fbb38aa284829fa3fb7722225.svg",
+    "static/media/pre.svg": "/udaychandra.github.io/static/media/pre.d4812f51c8c80976eaab.svg",
+    "index.html": "/udaychandra.github.io/index.html",
+    "main.d0033dcc.css.map": "/udaychandra.github.io/static/css/main.d0033dcc.css.map",
+    "main.0733a19d.js.map": "/udaychandra.github.io/static/js/main.0733a19d.js.map",
+    "415.4d6acbeb.chunk.js.map": "/udaychandra.github.io/static/js/415.4d6acbeb.chunk.js.map",
+    "787.1ed0c42c.chunk.js.map": "/udaychandra.github.io/static/js/787.1ed0c42c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d0033dcc.css",
+    "static/js/main.0733a19d.js"
+  ]
+}
