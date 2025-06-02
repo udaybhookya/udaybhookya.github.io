@@ -33,6 +33,14 @@ function Blogs() {
             />
           </Col>
 
+          <Col md={6} className="blog-card">
+            <BlogsCard
+              title="How We Met AI: Episode 2 : From Gates to Memory"
+              description="In this sequel to the RNN revolution, we dive into the core challenge that crippled vanilla RNNs - the vanishing and exploding gradient problem. This blog explains why traditional RNNs struggle with long sequences, and how LSTM (Long Short-Term Memory) and GRU (Gated Recurrent Unit) networks introduced a game-changing solution: gated memory. With an intuitive walkthrough and real-world metaphors, we explore how these networks remember better, forget smarter, and paved the way for modern sequence modeling."
+              link="https://medium.com/@bhookyauday/how-we-met-ai-episode-2-from-gates-to-memory-how-lstm-gru-conquered-the-vanishing-gradient-453b46cf5636"
+            />
+          </Col>
+
           {/* Add more BlogsCard components here as needed */}
         </Row>
       </Container>

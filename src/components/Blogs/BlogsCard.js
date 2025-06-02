@@ -6,7 +6,7 @@ function BlogsCard({ title, description, link }) {
   return (
     <Card className="blog-card-view">
       <Card.Body>
-        <Card.Title style={{ fontWeight: "bold", fontSize: "1.4rem" }}>
+        <Card.Title style={{fontWeight: "bold", fontSize: "1.4rem" }}>
           {title}
         </Card.Title>
         <Card.Text style={{ textAlign: "left", marginTop: "10px" }}>
