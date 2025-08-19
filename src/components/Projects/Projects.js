@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
 import haci from "../../Assets/Projects/haci.png";
+import aada from "../../Assets/Projects/agentic_ai_data_analytics.png";
 import movie_recommendation from "../../Assets/Projects/movie-recommendation.png";
 
 function Projects() {
@@ -17,6 +18,18 @@ function Projects() {
           Here are a few personal projects.
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+
+          <Col md={6} className="project-card">
+            <ProjectCard
+              imgPath={aada}
+              isBlog={false}
+              title="Agentic AI Data Analyst"
+              description="This project showcases a sophisticated multi-agent system that functions as an autonomous data analyst. Orchestrated using LangGraph, this system manages an end-to-end data analysis pipeline, transforming raw data into a polished report without human intervention. The process begins with automated data profiling, followed by the dynamic generation of a strategic analysis plan. A specialized agent writes Python code to execute this plan, featuring a robust self-correction mechanism that catches, debugs, and retries failed code. The system then interprets the results, generating insightful narratives and relevant data visualizations from the output. Finally, all findings are compiled into a professional PDF report. This project demonstrates a powerful, hands-off approach to generating data-driven insights, showcasing advanced skills in AI automation and intelligent agent design."
+              ghLink="https://github.com/udaybhookya/agentic-ai-data-analyst"
+              // demoLink=""
+            />
+          </Col>
+
           <Col md={6} className="project-card">
             <ProjectCard
               imgPath={haci}
