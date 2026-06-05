@@ -3,22 +3,22 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import logo from "../Assets/logo.png";
-import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import { CgGitFork } from "react-icons/cg";
+import { CgFileDocument } from "react-icons/cg";
 import { ImBlog } from "react-icons/im";
 import {
-  AiFillStar,
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
-  AiOutlineUser, AiOutlineFileText
+  AiOutlineUser,
+  AiOutlineFileText,
 } from "react-icons/ai";
-
-import { CgFileDocument } from "react-icons/cg";
+import { BsSun, BsMoon } from "react-icons/bs";
+import { useTheme } from "../context/ThemeContext";
 
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
 
   function scrollHandler() {
     if (window.scrollY >= 20) {
@@ -87,8 +87,8 @@ function NavBar() {
               >
                 <AiOutlineFileText
                   style={{ marginBottom: "2px" }}
-                />{""}
-                Research Work
+                />{" "}
+                Publications
               </Nav.Link>
             </Nav.Item>
 
@@ -106,7 +106,6 @@ function NavBar() {
             </Nav.Item>
 
             <Nav.Item>
-              
               <Nav.Link
                 as={Link}
                 to="/blogs"
@@ -114,6 +113,16 @@ function NavBar() {
               >
                 <ImBlog style={{ marginBottom: "2px" }} /> Blogs
               </Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item className="d-flex align-items-center">
+              <button
+                className="theme-toggle-btn"
+                onClick={toggleTheme}
+                aria-label="Toggle theme"
+              >
+                {isDark ? <BsSun /> : <BsMoon />}
+              </button>
             </Nav.Item>
 
           </Nav>

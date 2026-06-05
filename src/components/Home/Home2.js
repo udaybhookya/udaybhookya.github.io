@@ -19,37 +19,35 @@ function Home2() {
               WELCOME TO <span className="purple"> MY SPACE </span> ON THE WEB
             </h1>
             <p className="home-about-body">
-              I’m a curious and impact-driven data professional with ~3 years of
-              experience transforming complex ideas into intelligent, scalable
-              solutions.
+              I’m an Applied AI Engineer with <b className="purple">4 years of experience</b> shipping
+              production-grade agentic systems across defense, engineering, and commerce.
               <br />
               <br />
-              I specialize in turning raw data into real insights — blending
+              Currently at <b className="purple">Deloitte</b> as a Data Science &amp; GenAI Consultant,
+              building secure AI classification engines, multimodal multi-agent pipelines, and
+              agentic recommendation systems for enterprise clients.
+              <br />
+              <br />
+              I specialize in&nbsp;
               <i>
-                <b className="purple"> statistical thinking, machine learning, </b>
+                <b className="purple">multi-agent orchestration</b>
               </i>
-              and a strong <i><b className="purple">product sense</b></i>.
+              &nbsp;(LangGraph, Google ADK, MCP), RAG, LLM fine-tuning, and evaluation pipelines —
+              taking models from prototype to production at scale.
               <br />
               <br />
-              My strengths lie in building <b className="purple">end-to-end systems</b> that work — from 
-              modeling and analysis to deployment and automation.
-              <br />
-              <br />
-              I’ve worked across domains like&nbsp;
+              My work spans&nbsp;
               <i>
                 <b className="purple">
-                  NLP, time series, recommender systems, and generative AI,
+                  cloud cost optimization, IT operations AI, data storytelling,
                 </b>
-              </i> 
-              &nbsp;with a knack for translating technical depth into business value.
-              <br />
-              <br />
-              Whether it's crafting smart algorithms or engineering
-              user-friendly experiences, I bring&nbsp;
-              <i>
-                <b className="purple">clarity, creativity, and code</b>
               </i>
-              &nbsp;to every challenge.
+              &nbsp;and autonomous commerce — with&nbsp;
+              <b className="purple">$6M+ in measurable savings</b> delivered across enterprises.
+              <br />
+              <br />
+              Co-author of <b className="purple">5 research papers</b> and holder of{" "}
+              <b className="purple">4 patents</b> — driven by solving hard problems with real ROI.
               <br />
               <br />
               <b className="purple">Let’s build what’s next.</b>

@@ -1,9 +1,107 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../Particle";
 import PublicationsCard from "./PublicationsCard";
 
+const PAPERS = [
+  {
+    title: "Data Stories from Insights for IT Operations",
+    venue: "IEEE Big Data 2025",
+    year: "2025",
+    authors: "U. C. Bhookya, R. Babu, S. Saluja, M. Natu",
+    abstract:
+      "With increasing focus on observability and analytics, a large volume of data-driven insights gets generated. However, the users face challenges in sifting through these insights to identify the relevant ones. Furthermore, looking at these insights in isolation fails to provide a comprehensive understanding of the situation. This paper addresses this problem of insight fatigue by recommending the relevant insights to the user and generating chains of relevant insights, with a specific focus on the insights generated to manage IT operations.",
+    link: "https://ieeexplore.ieee.org/document/11401690",
+  },
+  {
+    title: "Addressing Spend Leakage and Optimization of Cloud Costs",
+    venue: "IEEE Big Data 2024 · Washington DC, USA",
+    year: "2024",
+    authors: "U. C. Bhookya, K. Jethuri, S. R. Ravuru, M. Natu",
+    abstract:
+      "Spend leakage in a cloud estate manifests in many forms and requires careful analysis of various metrics. We present a suite of features to detect such behavior and provide recommendations for optimization. We apply the proposed solution in practice through a real-world case-study demonstrating how many cases of spend leakage go unnoticed and how the proposed solutions enable better foresight and control on cloud costs.",
+    link: "https://ieeexplore.ieee.org/abstract/document/10825120",
+  },
+  {
+    title: "Cloud Cost Optimization with Data Storytelling",
+    venue: "IEEE ICDMW 2025 · USA",
+    year: "2025",
+    authors: "O. Rai, U. C. Bhookya, R. Babu, K. Jethuri, M. Natu",
+    abstract:
+      "Cloud cost optimization is one of the top priorities for most enterprises. This paper addresses the challenge of detecting cloud sprawl and spend leakage by presenting analytics-driven solutions and novel data story solutions to combat insight fatigue — helping cloud architects identify and act on the insights of their interest. Validated through a real-world running example of a leading IT organization.",
+    link: "https://ieeexplore.ieee.org/document/11416002",
+  },
+  {
+    title: "Mining Patterns for Proactive Management of Procure-to-Pay Exceptions",
+    venue: "IEEE ICDMW 2024 · Abu Dhabi, UAE",
+    year: "2024",
+    authors: "S. N. Samudrala, U. C. Bhookya, M. Natu",
+    abstract:
+      "This paper explores a novel approach to addressing exceptions in the procure-to-pay (P2P) process by analyzing recurring patterns that cause procurement inefficiencies. We present an enhanced white-box solution improving the generation and prioritization of classification rules by optimizing depth, coverage, and explainability — empowering procurement teams with greater transparency.",
+    link: "https://ieeexplore.ieee.org/abstract/document/10917769",
+  },
+  {
+    title: "Addressing Insight Fatigue with Insight Summarization",
+    venue: "COMSNETS 2025 · International Conference",
+    year: "2025",
+    authors: "S. Saluja, R. Babu, U. C. Bhookya, M. Natu",
+    abstract:
+      "In the era of data-driven decision-making, organizations are increasingly challenged by insight fatigue. This paper proposes Insight Summarization — leveraging an insight graph and frequent pattern mining to recursively group similar insights, select the right cohorts, and generate concise, interpretable summaries. Evaluated on real-world datasets.",
+    link: null,
+  },
+];
+
+const PATENTS = [
+  {
+    title: "Methods and Systems to Optimize Cloud Cost by Analyzing Resource Utilization",
+    venue: "Indian Patent Application",
+    year: "2024",
+    authors: "U.C. Bhookya, K. Jethuri, S. R. Ravuru, M. Natu",
+    patentNumber: "202421066668",
+    abstract:
+      "Describes intelligent methods and systems for optimizing cloud infrastructure costs through detailed analysis of resource utilization patterns, enabling automated recommendations and proactive cost controls.",
+  },
+  {
+    title: "Methods and Systems to Optimize Cloud Cost by Analyzing Pricing Models",
+    venue: "Indian Patent Application",
+    year: "2024",
+    authors: "U.C. Bhookya, K. Jethuri, S. R. Ravuru, M. Natu",
+    patentNumber: "202421066667",
+    abstract:
+      "Covers novel approaches to cloud cost reduction by analyzing and optimizing across different cloud pricing models — on-demand, reserved, and spot — enabling intelligent workload placement decisions.",
+  },
+  {
+    title: "Methods and Systems to Optimize Cloud Cost by Analyzing Cloud Resource Usage",
+    venue: "Indian Patent Application",
+    year: "2024",
+    authors: "U.C. Bhookya, K. Jethuri, S. R. Ravuru, M. Natu",
+    patentNumber: "202421066669",
+    abstract:
+      "Outlines systems for continuous monitoring and optimization of cloud resource usage, detecting inefficiencies and providing actionable recommendations for reducing cloud expenditure.",
+  },
+  {
+    title: "Data Driven Insight Generation and Creation of Contextually Consistent Chains Thereof",
+    venue: "Indian Patent Application",
+    year: "2024",
+    authors: "R. Babu, U.C. Bhookya, M. Natu",
+    patentNumber: "202421093804",
+    abstract:
+      "Presents a system for automatically generating data-driven insights and constructing contextually coherent chains of related insights, enabling better root cause analysis and decision support in IT operations.",
+  },
+];
+
+const FILTERS = [
+  { key: "all", label: "All" },
+  { key: "papers", label: `Papers (${PAPERS.length})` },
+  { key: "patents", label: `Patents (${PATENTS.length})` },
+];
+
 function Publications() {
+  const [filter, setFilter] = useState("all");
+
+  const showPapers = filter === "all" || filter === "papers";
+  const showPatents = filter === "all" || filter === "patents";
+
   return (
     <Container fluid className="project-section">
       <Particle />
@@ -11,79 +109,77 @@ function Publications() {
         <h1 className="project-heading">
           Research <strong className="purple">Publications & Patents</strong>
         </h1>
-        <p style={{ color: "white", marginBottom: "2rem" }}>
-          A glimpse into my published work and innovative contributions.
+        <p className="section-subtext" style={{ marginBottom: "1.5rem" }}>
+          Peer-reviewed research and innovations across AI, cloud cost optimization, and data intelligence.
         </p>
 
-        {/* --- Publications Section --- */}
-        <h2 className="purple mb-4">📄 Publications</h2>
-        <Row className="justify-content-center g-4">
+        {/* Stats row */}
+        <div className="pub-stats-row">
+          <div className="pub-stat">
+            <span className="pub-stat-num">5</span>
+            <span className="pub-stat-label">Papers</span>
+          </div>
+          <div className="pub-stat">
+            <span className="pub-stat-num">4</span>
+            <span className="pub-stat-label">Patents</span>
+          </div>
+          <div className="pub-stat">
+            <span className="pub-stat-num">3</span>
+            <span className="pub-stat-label">IEEE Conferences</span>
+          </div>
+          <div className="pub-stat">
+            <span className="pub-stat-num">4+</span>
+            <span className="pub-stat-label">Years Research</span>
+          </div>
+        </div>
 
-          <Col xs={12} md={10} className="project-card">
-            <PublicationsCard
-              title="Data Stories From Insights for IT Operations"
-              description= "IEEE International Conference on Big Data (Big Data), 2025"
-              abstract="With increasing focus on observability and analytics, a large volume of data-driven insights gets generated. However, the users face challenges in sifting through these insights to identify the relevant ones. Furthermore, looking at these insights in isolation fails to provide a comprehensive understanding of the situation. This paper addresses this problem of insight fatigue by recommending the relevant insights to the user and generating chains of relevant insights, with a specific focus on the insights generated to manage IT operations. We demonstrate the effectiveness of our approach with quantitative and qualitative experimental evaluation and a real-world case study. [Under Review]"
-            />
-          </Col>
+        {/* Filter tabs */}
+        <div className="pub-filter-tabs">
+          {FILTERS.map((f) => (
+            <button
+              key={f.key}
+              className={`pub-filter-btn${filter === f.key ? " active" : ""}`}
+              onClick={() => setFilter(f.key)}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
 
-          <Col xs={12} md={10} className="project-card">
-            <PublicationsCard
-              title="Addressing Spend Leakage and Optimization of Cloud Costs"
-              description="IEEE International Conference on Big Data (Big Data), 2024, Washington DC, USA."
-              abstract="Spend leakage in a cloud estate manifests in many forms and requires a careful analysis of various metrics. We present a suite of features to detect such behavior and provide recommendations for optimization. We apply the proposed solution in practice by presenting a real-world case-study. Through this case-study we demonstrate how many cases of spend leakage go unnoticed by simple handles to manage cloud estate and how the solutions proposed in the paper can enable the business with better foresight and control on the cloud costs."
-              link="https://ieeexplore.ieee.org/abstract/document/10825120"
-            />
-          </Col>
+        {/* Papers section */}
+        {showPapers && (
+          <>
+            {filter === "all" && (
+              <h2 className="pub-section-heading">Publications</h2>
+            )}
+            <Row className="g-4">
+              {PAPERS.map((p, i) => (
+                <Col key={i} xs={12} md={6}>
+                  <PublicationsCard type="publication" {...p} />
+                </Col>
+              ))}
+            </Row>
+          </>
+        )}
 
-          <Col xs={12} md={10} className="project-card">
-            <PublicationsCard
-              title="Cloud Cost Optimization with Data Storytelling"
-              description="IEEE ICDMW 2025, USA"
-              abstract="Cloud cost optimization is one of the top priorities for most enterprises. However, given the scale and complexity, detecting cloud sprawl and spend leakage and recommending opportunities for optimization presents several challenges. Furthermore, cloud architects face insight fatigue with the sheer volume of these data-driven insights. This leads to significant resistance in the adoption of analytics-driven solutions for cloud cost optimization. In this paper, we address this challenge by presenting analytics-driven solutions to detect cloud inefficiencies and to generate actionable recommendations for addressing these inefficiencies. Furthermore, we address the problem of insight fatigue by presenting novel data story solutions to help users identify the insights of their interest. We validate our approach through a real-world running example of a leading IT organization."
-            />
-          </Col>
-
-          <Col xs={12} md={10} className="project-card">
-            <PublicationsCard
-              title="Mining Patterns for Proactive Management of Procure-to-Pay Exceptions"
-              description="IEEE ICDMW 2024, Abu Dhabi."
-              abstract="This paper explores a novel approach to addressing exceptions in the procure-to-pay (P2P) process by analyzing recurring patterns that cause procurement inefficiencies. The P2P process, which involves issuing purchase orders, receiving goods, and validating invoices through three-way matching, often encounters exceptions such as pricing discrepancies, quantity mismatches, and missing documentation. These issues can lead to delays, financial errors, and strained supplier relationships. Existing black-box models such as neural networks, while effective at detection of exceptions, lack transparency. On the other hand, traditional white-box methods such as classification trees fall short in identifying complex patterns that drive recurring exceptions. This paper presents an enhanced white-box solution, which improves the generation and prioritization of classification rules by optimizing the depth, coverage, and explainability of patterns. The proposed method allows for more accurate and comprehensive exception management, empowering procurement teams to make informed decisions with greater transparency."
-              link="https://ieeexplore.ieee.org/abstract/document/10917769"
-            />
-          </Col>
-
-          <Col xs={12} md={10} className="project-card">
-            <PublicationsCard
-              title="Addressing Insight Fatigue with Insight Summarization"
-              description="COMSNETS 2025 – International Communication Systems and Networks Workshops."
-              abstract="In the era of data-driven decisions-making organizations are increasingly challenged by insight fatigue, where a large volume insights overwhelm decision makers, hindering effective decision making. The paper addresses this issue by proposing for `Insight Summarization`. The Solution leverages an 'insight graph' and frequent pattern mining to recursively group similar insights, select the right cohorts if insights, and generate concise and interpretable summaries. We evaluate the effectiveness of our approach by generating summaries for insights generated on real-world dataset."
-              link="https://ieeexplore.ieee.org/document/your-paper-link"
-            />
-          </Col>
-
-        </Row>
-
-        {/* --- Patents Section --- */}
-        <h2 className="purple mt-5 mb-4">📑 Patent Filings</h2>
-        <Row className="justify-content-center g-4">
-          <Col xs={12} md={10} className="project-card">
-            <PublicationsCard
-              title="AI-Driven Cost Optimization Engine for Cloud Platforms"
-              description="Patent describing predictive and intelligent automation for cloud resource management."
-              abstract="This patent outlines an intelligent cost engine that leverages time-series forecasting and ML-based anomaly detection to automate cloud cost optimization in hybrid environments."
-              // link="https://link-to-your-patent.com"
-            />
-          </Col>
-
-          <Col xs={12} md={10} className="project-card">
-            <PublicationsCard
-              title="Graph-Based Recommendation System for Insight Chains"
-              description="Patent focused on insight chaining for better decision-making in IT operations."
-              abstract="Describes a method to construct coherent chains of operational insights using graph theory, improving root cause analysis, and enabling intelligent recommendations through pattern continuity."
-            />
-          </Col>
-        </Row>
+        {/* Patents section */}
+        {showPatents && (
+          <>
+            <h2
+              className="pub-section-heading"
+              style={{ marginTop: showPapers ? "3rem" : "0" }}
+            >
+              {filter === "all" ? "Patents" : "Patent Filings"}
+            </h2>
+            <Row className="g-4" style={{ paddingBottom: "30px" }}>
+              {PATENTS.map((p, i) => (
+                <Col key={i} xs={12} md={6}>
+                  <PublicationsCard type="patent" {...p} />
+                </Col>
+              ))}
+            </Row>
+          </>
+        )}
       </Container>
     </Container>
   );

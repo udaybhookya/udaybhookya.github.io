@@ -12,7 +12,7 @@ function Blogs() {
         <h1 className="project-heading">
           My <strong className="purple">Blog Posts</strong>
         </h1>
-        <p style={{ color: "white", marginBottom: "2rem" }}>
+        <p className="section-subtext" style={{ marginBottom: "2rem" }}>
           Thoughts, insights, and learning stories I’ve shared.
         </p>
 

@@ -1,44 +1,52 @@
-import React from "react";
-import Card from "react-bootstrap/Card";
+import React, { useState } from "react";
 
-function PublicationsCard({ title, description, abstract, link }) {
+function PublicationsCard({ title, venue, year, abstract, link, type = "publication", authors, patentNumber }) {
+  const [showAbstract, setShowAbstract] = useState(false);
+
   return (
-    <Card className="project-card-view">
-      <Card.Body>
-        <Card.Title style={{ fontWeight: "bold", fontSize: "1.5rem" }}>
-          {title}
-        </Card.Title>
+    <div className={`pub-card pub-card--${type}`}>
+      <div className="pub-card-meta">
+        <span className={`pub-type-badge pub-type--${type}`}>
+          {type === "patent" ? "Patent Pending" : "IEEE Paper"}
+        </span>
+        {year && <span className="pub-year-badge">{year}</span>}
+      </div>
 
-        <Card.Text style={{ textAlign: "left", marginTop: "10px" }}>
-          <strong>Description:</strong> {description}
-        </Card.Text>
+      <h3 className="pub-title">{title}</h3>
 
-        {abstract && (
-          <Card.Text
-            className="purple"
-            style={{
-              textAlign: "left",
-              fontStyle: "italic",
-            } }
+      <div className="pub-venue">{venue}</div>
+
+      {authors && <p className="pub-authors">{authors}</p>}
+
+      {patentNumber && (
+        <p className="pub-patent-num">App. No. {patentNumber}</p>
+      )}
+
+      {abstract && (
+        <>
+          <button
+            className="abstract-toggle"
+            onClick={() => setShowAbstract((p) => !p)}
           >
-            <strong>Abstract:</strong> {abstract}
-          </Card.Text>
-        )}
+            {showAbstract ? "▲ Hide abstract" : "▼ Read abstract"}
+          </button>
+          {showAbstract && <p className="abstract-text">{abstract}</p>}
+        </>
+      )}
 
-        {link && (
-          <div className="text-end">
-            <a
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-            >
-              View Full Paper
-            </a>
-          </div>
-        )}
-      </Card.Body>
-    </Card>
+      {link && (
+        <div style={{ marginTop: "auto", paddingTop: "1rem" }}>
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pub-link-btn"
+          >
+            View Paper →
+          </a>
+        </div>
+      )}
+    </div>
   );
 }
 
